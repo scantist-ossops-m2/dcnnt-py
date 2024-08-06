@@ -1,6 +1,5 @@
 import logging
 import subprocess
-from shlex import quote
 
 from .base import Plugin
 from ..common import *
@@ -17,13 +16,13 @@ class NotificationsPlugin(Plugin):
         DirEntry('icon_dir', 'Directory to notification icons', True, '$DCNNT_RUNTIME_DIR', True, False),
         TemplateEntry('cmd', 'Template of notification show command',
                       False, 0, 4096, "notify-send -i '{icon}' '{title}' '{text}'", replacements=(
-                          Rep('uin', 'UIN of device which send notification', True),
-                          Rep('name', 'Name of device which send notification', True),
-                          Rep('package', 'Name of Android package  which create notification', True),
-                          Rep('icon', 'Path to saved notification icon', True),
-                          Rep('title', 'Title of notification', True),
-                          Rep('text', 'Main content of notification', True),
-                      ))
+                Rep('uin', 'UIN of device which send notification', True),
+                Rep('name', 'Name of device which send notification', True),
+                Rep('package', 'Name of Android package  which create notification', True),
+                Rep('icon', 'Path to saved notification icon', True),
+                Rep('title', 'Title of notification', True),
+                Rep('text', 'Main content of notification', True),
+            ))
     ))
 
     def __init__(self, app, handler, device):
@@ -54,6 +53,6 @@ class NotificationsPlugin(Plugin):
                         except Exception as e:
                             self.log(e, logging.WARNING)
                     icon = icon_path if icon_data else ''
-                    command = cmd.format(uin=quote(uin), name=quote(name), icon=quote(icon), text=quote(text), title=quote(title), package=quote(package))
+                    command = cmd.format(uin=uin, name=name, icon=icon, text=text, title=title, package=package)
                     self.log('Execute: "{}"'.format(command))
                     subprocess.call(command, shell=True)
