@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: dcnnt
+Version: 0.7.1+patched
+Summary: UI-less tool to connect Android phone with desktop
+Home-page: https://github.com/cyanomiko/dcnnt-py
+Author: cyanomiko
+Author-email: cyanomiko@protonmail.com
+License: MIT
+Keywords: phone,android,sync,device
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Communications :: File Sharing
+Classifier: Topic :: System :: Networking
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+dcnnt
+=====
+
+**NO WAR**
+
+Yet another tool to connect Android phone with desktop similar to KDE Connect.
+
+Features
+--------
+
+* Works in background
+* Controlled via phone app 
+* Configurable via JSON files
+* Configuration overrides
+* Upload files from phone to desktop
+* Download files from pre-defined directories at desktop to phone
+* Open files and web URLs from phone on desktop
+* Show phone notification
+* Execute pre-defined commands on desktop
+* Periodically running sync tasks (directories, contacts)
+
+Install
+-------
+
+From git repository:
+
+    git clone https://github.com/cyanomiko/dcnnt-py.git
+    cd dcnnt-py
+    python3 setup.py sdist bdist_wheel
+    pip3 install dist/dcnnt-0.7.1-py3-none-any.whl
+
+From PyPI:
+
+    pip3 install dcnnt
+
+Usage
+-----
+
+Pairing mode:
+
+    dcnnt pair
+
+Run as daemon:
+
+    dcnnt start
+
+Stop daemon:
+
+    dcnnt stop
+
+Run in foreground mode:
+
+    dcnnt foreground
+    
+Plugins: [doc/plugins.md](doc/plugins.md) (https://github.com/cyanomiko/dcnnt-py/blob/master/doc/plugins.md)  
+Configuring: [doc/config.md](doc/config.md) (https://github.com/cyanomiko/dcnnt-py/blob/master/doc/config.md)
+
+
